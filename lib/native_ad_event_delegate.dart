@@ -7,6 +7,7 @@ class NativeAdEventDelegate {
     this.onAdClicked,
     this.onAdFailedToLoad,
     this.onAdLoaded,
+    this.onClickHolder
   });
 
   final Function() onAdImpression;
@@ -14,6 +15,7 @@ class NativeAdEventDelegate {
   final Function() onAdClicked;
   final Function(Map<String, dynamic>) onAdFailedToLoad;
   final Function() onAdLoaded;
+  final Function() onClickHolder;
 
   Future<dynamic> handleMethod(MethodCall call) async {
     switch (call.method) {
@@ -36,6 +38,9 @@ class NativeAdEventDelegate {
       case 'onAdLoaded':
       case 'didReceive':
         onAdLoaded();
+        break;
+      case 'onClickHolder':
+        onClickHolder();
         break;
     }
   }

@@ -18,6 +18,7 @@ class NativeAdView extends StatefulWidget {
     this.onAdClicked,
     this.onAdFailedToLoad,
     this.onAdLoaded,
+    this.onClickHolder
   }) : super(key: key);
 
   final NativeAdViewCreatedCallback onParentViewCreated;
@@ -28,6 +29,7 @@ class NativeAdView extends StatefulWidget {
   final Function() onAdClicked;
   final Function(Map<String, dynamic>) onAdFailedToLoad;
   final Function() onAdLoaded;
+  final Function() onClickHolder;
 
   @override
   State<StatefulWidget> createState() => _NativeAdViewState(
@@ -37,6 +39,7 @@ class NativeAdView extends StatefulWidget {
           onAdClicked: onAdClicked,
           onAdFailedToLoad: onAdFailedToLoad,
           onAdLoaded: onAdLoaded,
+          onClickHolder: onClickHolder
         ),
       );
 }

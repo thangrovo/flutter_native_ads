@@ -31,6 +31,8 @@ class UnifiedAdLayout(context: Context, messenger: BinaryMessenger, id: Int, arg
     private val priceView: TextView? = unifiedNativeAdView.findViewById(context.resources.getIdentifier("flutter_native_ad_price", "id", hostPackageName))
     private val advertiserView: TextView? = unifiedNativeAdView.findViewById(context.resources.getIdentifier("flutter_native_ad_advertiser", "id", hostPackageName))
 
+    private val holderView: View? = unifiedNativeAdView.findViewById(context.resources.getIdentifier("flutter_native_ad_holder", "id", hostPackageName))
+
     private val methodChannel: MethodChannel = MethodChannel(messenger, "com.github.sakebook.android/unified_ad_layout_$id")
     private var ad: UnifiedNativeAd? = null
 
@@ -74,6 +76,10 @@ class UnifiedAdLayout(context: Context, messenger: BinaryMessenger, id: Int, arg
                 .build()
                 .loadAd(AdRequest.Builder()
                         .build())
+
+        holderView?.setOnClickListener {
+            methodChannel.invokeMethod("onClickHolder", null)
+        }
     }
 
     override fun getView(): View {
