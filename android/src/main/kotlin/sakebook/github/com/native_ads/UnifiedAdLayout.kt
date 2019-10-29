@@ -96,6 +96,7 @@ class UnifiedAdLayout(context: Context, messenger: BinaryMessenger, id: Int, arg
         headlineView.text = ad?.headline
         bodyView.text = ad?.body
         callToActionView.text = ad?.callToAction
+        mediaView?.background = null;
         mediaView?.setMediaContent(ad?.mediaContent)
 
         iconView?.setImageDrawable(ad?.icon?.drawable)
