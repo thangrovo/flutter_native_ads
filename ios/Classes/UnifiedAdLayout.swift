@@ -63,7 +63,7 @@ class UnifiedAdLayout : NSObject, FlutterPlatformView {
         bodyView = adView.bodyView as? UILabel
         callToActionView = adView.callToActionView as? UILabel
         mediaView = adView.mediaView
-        mediaView.contentMode = .scaleAspectFill
+        mediaView?.contentMode = .scaleAspectFill
         guard let attributionLabel = (adView as UIView).subviews.first(where: { (v) -> Bool in
             v.restorationIdentifier == "flutter_native_ad_attribution_view_id"
         }) as? UILabel else {
@@ -97,7 +97,7 @@ extension UnifiedAdLayout : GADUnifiedNativeAdLoaderDelegate {
         mediaView?.mediaContent = nativeAd.mediaContent
         attributionView.text = attributionText
         unifiedNativeAdView.nativeAd = nativeAd
-        mediaView.contentMode = .scaleAspectFill
+        mediaView?.contentMode = .scaleAspectFill
         // Set ourselves as the native ad delegate to be notified of native ad events.
         nativeAd.delegate = self
     }
